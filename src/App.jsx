@@ -29,6 +29,16 @@ function App() {
     .then(deletedSong => setSongs(songs.filter(song => song._id !== deletedSong._id)))
   }
 
+  const handleUpdateSong = updatedSongData => {
+    // builds a new array, replacing the song with a matching id of the updated song, to the value of the updated song
+    songService.update(updatedSongData)
+    .then(updatedSong => {
+      const newSongsArray = songs.map(song => song._id === updatedSong ? updatedSongData : song )
+    setSongs(newSongsArray)
+    navigate('/')
+    })
+  }
+
   return (
    <>
     <nav>
@@ -38,7 +48,7 @@ function App() {
     <Routes>
       <Route path='/add' element={<AddSong handleAddSong={handleAddSong} />}/>
       <Route path='/' element={<SongList songs={songs} handleDeleteSong={handleDeleteSong} />} />
-      <Route path='/edit' element={<EditSong />}/>
+      <Route path='/edit' element={<EditSong handleUpdateSong={handleUpdateSong} />}/>
     </Routes>
    </>
   );

@@ -20,8 +20,18 @@ function deleteOne(id) {
   })
   .then(res=> res.json())
 }
+
+function update(song) {
+  return fetch(`${BASE_URL}/${song._id}`, {
+    method: 'PUT',
+    headers: {'content-type': 'application/json'},
+    body: JSON.stringify(song)
+  })
+  .then(res=> res.json())
+}
 export {
 	create,
   getAll,
   deleteOne,
+  update,
 }
