@@ -24,7 +24,8 @@ function App() {
   }, [])
 
   const handleDeleteSong = id => {
-    setSongs(songs.filter(song=> song._id !==id))
+    songService.deleteOne(id)
+    .then(deletedSong => setSongs(songs.filter(song => song._id !== deletedSong._id)))
   }
 
   return (
