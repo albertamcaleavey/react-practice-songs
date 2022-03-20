@@ -3,6 +3,7 @@ import { Route, Routes, NavLink, useNavigate } from 'react-router-dom';
 import './App.css';
 import AddSong from './pages/AddSong/AddSong/AddSong';
 import SongList from './components/SongList/SongList';
+import EditSong from './pages/EditSong/EditSong';
 import *  as songService from './services/songs'
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
     <Routes>
       <Route path='/add' element={<AddSong handleAddSong={handleAddSong} />}/>
       <Route path='/' element={<SongList songs={songs} handleDeleteSong={handleDeleteSong} />} />
+      <Route path='/edit' element={<EditSong />}/>
     </Routes>
    </>
   );
