@@ -1,10 +1,10 @@
-const SongCard = (props) => {
+const SongCard = ({song, handleDeleteSong}) => {
   return (  
     <div>
-      <p>Name: {props.song.name}</p>
-            <p>Artist: {props.song.artist}</p>
-            <p>Rating: {props.song.rating}</p>
-            <button>Delete</button>
+      <p>Name: {song.name}</p>
+            <p>Artist: {song.artist}</p>
+            <p>Rating: {song.rating}</p>
+            <button onClick={()=> handleDeleteSong(song._id)}>Delete</button>
     </div>
   )
   
